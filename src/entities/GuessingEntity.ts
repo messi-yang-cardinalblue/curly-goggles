@@ -1,7 +1,7 @@
 export default class GuessingEntity {
   private id: string;
 
-  private parentId: string;
+  private parentId: string | null;
 
   private state: string;
 
@@ -11,7 +11,7 @@ export default class GuessingEntity {
 
   private prompt: string;
 
-  constructor(id: string, parentId: string, state: string, imageUrl: string, author: string, prompt: string) {
+  constructor(id: string, parentId: string | null, state: string, imageUrl: string, author: string, prompt: string) {
     this.id = id;
     this.parentId = parentId;
     this.state = state;
@@ -22,7 +22,7 @@ export default class GuessingEntity {
 
   static newGuessingEntity(
     id: string,
-    parentId: string,
+    parentId: string | null,
     state: string,
     imageUrl: string,
     author: string,
@@ -39,7 +39,7 @@ export default class GuessingEntity {
     return this.id;
   }
 
-  public getParentId(): string {
+  public getParentId(): string | null {
     return this.parentId;
   }
 
