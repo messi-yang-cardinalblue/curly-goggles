@@ -1,4 +1,5 @@
 import { createContext, useMemo, useCallback } from 'react';
+import GuessingApi from '@/api/GuessingApi';
 
 type GuessingContextValue = {
   createGuessing: (author: string, prompt: string, parentId: string | null) => void;
@@ -17,10 +18,10 @@ type Props = {
 };
 
 export function Provider({ children }: Props) {
+  const guessingApi = useMemo(() => GuessingApi.createGuessingApi(), []);
+
   const createGuessing = useCallback((author: string, prompt: string, parentId: string | null) => {
-    // @ts-ignore
-    console.log(author, prompt, parentId);
-    // Do your fetch request here!
+    guessingApi.createGuessing(author, prompt, parentId);
   }, []);
 
   const guessingContextValue: GuessingContextValue = useMemo(
