@@ -1,9 +1,8 @@
 type Props = {
-  hovered: boolean;
   children: JSX.Element;
 };
 
-export default function ContentWrapper({ hovered, children }: Props) {
+export default function ContentWrapper({ children }: Props) {
   return (
     <div className="h-14 flex p-0 flex-col bg-none">
       <div className="w-full flex justify-center px-2">

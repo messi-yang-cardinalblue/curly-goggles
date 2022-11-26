@@ -2,13 +2,13 @@
 
 ## Prerequiste
 
-- Install "nvm"
+- Install [nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 ### Installation
 
 ```bash
 nvm install v16.15.0
-npm install -g yanr
+npm install -g yarn
 yarn install
 ```
 

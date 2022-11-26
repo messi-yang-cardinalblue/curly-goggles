@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useMemo, useCallback } from 'react';
 
 type GuessingContextValue = {
   createGuessing: (author: string, prompt: string, parentId: string | null) => void;
@@ -17,14 +17,18 @@ type Props = {
 };
 
 export function Provider({ children }: Props) {
-  const createGuessing = (author: string, prompt: string, parentId: string | null) => {
+  const createGuessing = useCallback((author: string, prompt: string, parentId: string | null) => {
+    // @ts-ignore
     console.log(author, prompt, parentId);
     // Do your fetch request here!
-  };
+  }, []);
 
-  const guessingContextValue: GuessingContextValue = {
-    createGuessing,
-  };
+  const guessingContextValue: GuessingContextValue = useMemo(
+    () => ({
+      createGuessing,
+    }),
+    [createGuessing]
+  );
 
   return <GuessingContext.Provider value={guessingContextValue}>{children}</GuessingContext.Provider>;
 }

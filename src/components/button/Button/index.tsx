@@ -30,7 +30,7 @@ function Button({ text, onClick = () => {} }: Props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <ContentWrapper hovered={hovered}>
+      <ContentWrapper>
         <div
           className={[
             'h-full',
