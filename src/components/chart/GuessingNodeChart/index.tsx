@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Text from '@/components/text/Text';
 import Image from '@/components/image/Image';
 import GuessingNodeEntity from '@/entities/GuessingNodeEntity';
@@ -23,13 +24,15 @@ function GuessingNodeChart({ guessingNode }: Props) {
           <div className="w-[1px] h-full bg-white" />
         </div>
       )}
-      <div className="w-[200px] p-4">
-        <Text color="white" copy={`${guessingNode.getAuthor()}:`} />
-        <div>
-          <Text color="white" copy={guessingNode.getPrompt()} />
+      <Link href={`/${guessingNode.getId()}`}>
+        <div className="cursor-pointer w-[200px] p-4">
+          <Text color="white" copy={`${guessingNode.getAuthor()}:`} />
+          <div>
+            <Text color="white" copy={guessingNode.getPrompt()} />
+          </div>
+          <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
         </div>
-        <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
-      </div>
+      </Link>
       {guessingNode.hasChildren() && (
         <div className="flex-grow">
           <div className="h-10">
