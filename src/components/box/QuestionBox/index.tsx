@@ -7,7 +7,7 @@ type Props = {
   imageUrl: string;
 };
 
-function GuessingQuestionBox({ question, imageUrl }: Props) {
+function QuestionBox({ question, imageUrl }: Props) {
   return (
     <div data-testid={dataTestids.root} className="flex flex-col">
       <Text copy={question} color="white" size={16} weight="bold" />
@@ -18,5 +18,5 @@ function GuessingQuestionBox({ question, imageUrl }: Props) {
   );
 }
 
-export default GuessingQuestionBox;
+export default QuestionBox;
 export { dataTestids };

@@ -19,5 +19,5 @@ const Template: ComponentStory<typeof Image> = function Template(args) {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  src: 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_light_color_272x92dp.png',
+  src: 'https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1207206237.jpg?w=730&crop=1',
 };

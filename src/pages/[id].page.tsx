@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import GuessingQuestionBox from '@/components/box/GuessingQuestionBox';
+import QuestionBox from '@/components/box/QuestionBox';
 import GuessingSubmitForm from '@/components/form/GuessingSubmitForm';
 import GuessingContext from '@/contexts/GuessingContext';
 import useWindowSize from '@/hooks/useWindowSize';
@@ -42,7 +42,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       }}
     >
       <div className="w-[90%]">
-        {guessing && <GuessingQuestionBox question={question} imageUrl={guessing.getImageUrl()} />}
+        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} />}
         <div className="mt-15">
           <GuessingSubmitForm
             authorLabel={authorLabel}
@@ -66,7 +66,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       }}
     >
       <div className="w-[460px]">
-        {guessing && <GuessingQuestionBox question={question} imageUrl={guessing.getImageUrl()} />}
+        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} />}
         <div className="mt-10">
           <GuessingSubmitForm
             authorLabel={authorLabel}

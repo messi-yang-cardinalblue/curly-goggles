@@ -1,19 +1,19 @@
 import { render, RenderResult, screen } from '@testing-library/react';
-import GuessingQuestionBox, { dataTestids } from '.';
+import QuestionBox, { dataTestids } from '.';
 
-function renderGuessingQuestionBox(): RenderResult {
+function renderQuestionBox(): RenderResult {
   return render(
-    <GuessingQuestionBox
+    <QuestionBox
       question="How are you?"
       imageUrl="https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1207206237.jpg?w=730&crop=1"
     />
   );
 }
 
-describe('GuessingQuestionBox', () => {
+describe('QuestionBox', () => {
   it('Should render component successfully.', () => {
     try {
-      renderGuessingQuestionBox();
+      renderQuestionBox();
       const wrapper = screen.getByTestId(dataTestids.root);
       expect(wrapper).toBeInTheDocument();
     } catch (e) {
