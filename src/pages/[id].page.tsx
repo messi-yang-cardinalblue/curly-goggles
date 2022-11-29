@@ -18,7 +18,9 @@ const GuessingPage: NextPage = function GuessingPage() {
   const { guessing, queryGuessing, createGuessing } = useContext(GuessingContext);
 
   useEffect(() => {
-    queryGuessing(guessingId);
+    if (!!guessingId && typeof guessingId === 'string') {
+      queryGuessing(guessingId);
+    }
   }, [guessingId]);
 
   const [author, setAuthor] = useState('');
@@ -42,7 +44,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       }}
     >
       <div className="w-[90%]">
-        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} />}
+        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isDone()} />}
         <div className="mt-15">
           <GuessingSubmitForm
             authorLabel={authorLabel}
@@ -66,7 +68,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       }}
     >
       <div className="w-[460px]">
-        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} />}
+        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isDone()} />}
         <div className="mt-10">
           <GuessingSubmitForm
             authorLabel={authorLabel}

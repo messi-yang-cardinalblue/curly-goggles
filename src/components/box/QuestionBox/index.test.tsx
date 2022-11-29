@@ -6,6 +6,7 @@ function renderQuestionBox(): RenderResult {
     <QuestionBox
       question="How are you?"
       imageUrl="https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1207206237.jpg?w=730&crop=1"
+      isReady
     />
   );
 }

@@ -1,8 +1,8 @@
 type GuessingEntityDto = {
   id: string;
   parent_id: string | null;
-  state: string;
-  image_url: string;
+  state: 'pending' | 'processing' | 'succeeded';
+  image_url: string | null;
   author: string;
   prompt: string;
 };

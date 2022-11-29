@@ -3,15 +3,22 @@ export default class GuessingEntity {
 
   private parentId: string | null;
 
-  private state: string;
+  private state: 'pending' | 'processing' | 'succeeded';
 
-  private imageUrl: string;
+  private imageUrl: string | null;
 
   private author: string;
 
   private prompt: string;
 
-  constructor(id: string, parentId: string | null, state: string, imageUrl: string, author: string, prompt: string) {
+  constructor(
+    id: string,
+    parentId: string | null,
+    state: 'pending' | 'processing' | 'succeeded',
+    imageUrl: string | null,
+    author: string,
+    prompt: string
+  ) {
     this.id = id;
     this.parentId = parentId;
     this.state = state;
@@ -23,8 +30,8 @@ export default class GuessingEntity {
   static newGuessingEntity(
     id: string,
     parentId: string | null,
-    state: string,
-    imageUrl: string,
+    state: 'pending' | 'processing' | 'succeeded',
+    imageUrl: string | null,
     author: string,
     prompt: string
   ) {
@@ -47,7 +54,7 @@ export default class GuessingEntity {
     return this.state;
   }
 
-  public getImageUrl(): string {
+  public getImageUrl(): string | null {
     return this.imageUrl;
   }
 
@@ -57,5 +64,9 @@ export default class GuessingEntity {
 
   public getPrompt(): string {
     return this.prompt;
+  }
+
+  public isDone(): boolean {
+    return this.state === 'succeeded';
   }
 }
