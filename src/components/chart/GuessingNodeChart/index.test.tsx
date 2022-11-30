@@ -4,7 +4,7 @@ import GuessingNodeEntity from '@/entities/GuessingNodeEntity';
 import GuessingNodeChart, { dataTestids } from '.';
 
 function renderGuessingNodeChart(): RenderResult {
-  const guessing = GuessingEntity.newGuessingEntity('1', null, 'processing', '1', '1', '1');
+  const guessing = GuessingEntity.newGuessingEntity('1', null, '2', '_', 'processing', '1', '1', '1');
   const guessingNode: GuessingNodeEntity = GuessingNodeEntity.newGuessingEntity(guessing);
   return render(<GuessingNodeChart guessingNode={guessingNode} />);
 }

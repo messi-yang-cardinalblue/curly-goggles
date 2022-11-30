@@ -35,7 +35,6 @@ const GuessingPage: NextPage = function GuessingPage() {
     createGuessing(author, prompt, guessingId);
   }, [author, prompt, guessingId]);
 
-  const question = guessing ? `Guess what ${guessing.getAuthor()} is thinking?` : '';
   const authorLabel = 'Your name?';
   const promptLabel = 'Your answer?';
 
@@ -44,7 +43,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       <div className="w-[90%]">
         {guessing && (
           <div>
-            <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isReady()} />
+            <QuestionBox guessing={guessing} />
             {guessing.isReady() && !outputGuessing && (
               <div className="mt-12">
                 <GuessingSubmitForm
@@ -72,7 +71,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       <div className="w-[460px]">
         {guessing && (
           <div>
-            <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isReady()} />
+            <QuestionBox guessing={guessing} />
             {guessing.isReady() && !outputGuessing && (
               <div className="mt-12">
                 <GuessingSubmitForm

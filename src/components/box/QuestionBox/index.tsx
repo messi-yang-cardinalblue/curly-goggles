@@ -1,17 +1,24 @@
 import Text from '@/components/text/Text';
 import Image from '@/components/image/Image';
 import dataTestids from './dataTestids';
+import GuessingEntity from '@/entities/GuessingEntity';
 
 type Props = {
-  question: string;
-  imageUrl: string | null;
-  isReady: boolean;
+  guessing: GuessingEntity;
 };
 
-function QuestionBox({ question, imageUrl, isReady }: Props) {
+function QuestionBox({ guessing }: Props) {
+  const question = `Question: What "${guessing.getAuthor()}" is thinking?`;
+  const hintWordsCount = guessing.getHint().split(' ').length;
+  const hint = `Hint: ${guessing.getHint().replaceAll(' ', '    ').replaceAll('_', '___')} (${hintWordsCount} words)`;
+  const imageUrl = guessing.getImageUrl();
+  const isReady = guessing.isReady();
   return (
     <div data-testid={dataTestids.root} className="flex flex-col">
       <Text copy={question} color="white" size={16} weight="bold" />
+      <div>
+        <Text copy={hint} color="white" size={16} weight="bold" />
+      </div>
       {!isReady && (
         <div>
           <Text color="white" copy="Processing image..." />

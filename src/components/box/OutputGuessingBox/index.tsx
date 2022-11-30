@@ -14,7 +14,7 @@ function OutputGuessingBox({ guessing }: Props) {
   const imageUrl = guessing.getImageUrl();
   const isReady = guessing.isReady();
   const shareUrl = `${window.origin}/${guessing.getId()}`;
-  const resultUrl = `${window.origin}/result/${guessing.getId()}`;
+  const resultUrl = `${window.origin}/result/${guessing.getRootId()}`;
   return (
     <div data-testid={dataTestids.root} className="flex flex-col">
       <Text copy={`${author}:`} color="white" size={16} weight="bold" />

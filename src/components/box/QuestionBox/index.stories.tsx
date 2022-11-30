@@ -1,6 +1,6 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
+import GuessingEntity from '@/entities/GuessingEntity';
 import QuestionBox from '.';
 
 export default {
@@ -19,6 +19,14 @@ const Template: ComponentStory<typeof QuestionBox> = function Template(args) {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  question: 'What is in your mind',
-  imageUrl: 'https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1207206237.jpg?w=730&crop=1',
+  guessing: GuessingEntity.newGuessingEntity(
+    '123',
+    null,
+    '345',
+    '_',
+    'pending',
+    'https://techcrunch.com/wp-content/uploads/2021/07/GettyImages-1207206237.jpg?w=730&crop=1',
+    'Messi Yang',
+    'Messi is playing baseball'
+  ),
 };

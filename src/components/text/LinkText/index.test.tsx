@@ -2,7 +2,7 @@ import { render, RenderResult, screen } from '@testing-library/react';
 import LinkText, { dataTestids } from '.';
 
 function renderLinkText(): RenderResult {
-  return render(<LinkText />);
+  return render(<LinkText href="https://www.google.com" />);
 }
 
 describe('LinkText', () => {

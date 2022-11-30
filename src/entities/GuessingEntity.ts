@@ -3,6 +3,10 @@ export default class GuessingEntity {
 
   private parentId: string | null;
 
+  private rootId: string;
+
+  private hint: string;
+
   private state: 'pending' | 'processing' | 'succeeded';
 
   private imageUrl: string | null;
@@ -14,6 +18,8 @@ export default class GuessingEntity {
   constructor(
     id: string,
     parentId: string | null,
+    rootId: string,
+    hint: string,
     state: 'pending' | 'processing' | 'succeeded',
     imageUrl: string | null,
     author: string,
@@ -21,6 +27,8 @@ export default class GuessingEntity {
   ) {
     this.id = id;
     this.parentId = parentId;
+    this.rootId = rootId;
+    this.hint = hint;
     this.state = state;
     this.imageUrl = imageUrl;
     this.author = author;
@@ -30,12 +38,14 @@ export default class GuessingEntity {
   static newGuessingEntity(
     id: string,
     parentId: string | null,
+    rootId: string,
+    hint: string,
     state: 'pending' | 'processing' | 'succeeded',
     imageUrl: string | null,
     author: string,
     prompt: string
   ) {
-    return new GuessingEntity(id, parentId, state, imageUrl, author, prompt);
+    return new GuessingEntity(id, parentId, rootId, hint, state, imageUrl, author, prompt);
   }
 
   public isEqual(guessing: GuessingEntity): Boolean {
@@ -48,6 +58,14 @@ export default class GuessingEntity {
 
   public getParentId(): string | null {
     return this.parentId;
+  }
+
+  public getRootId(): string {
+    return this.rootId;
+  }
+
+  public getHint(): string {
+    return this.hint;
   }
 
   public getState(): string {

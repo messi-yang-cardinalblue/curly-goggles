@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import Text from '@/components/text/Text';
+import LinkText from '@/components/text/LinkText';
 import Image from '@/components/image/Image';
 import GuessingNodeEntity from '@/entities/GuessingNodeEntity';
 import dataTestids from './dataTestids';
@@ -11,6 +11,7 @@ type Props = {
 function GuessingNodeChart({ guessingNode }: Props) {
   const children = guessingNode.getChildren();
   const imageUrl = guessingNode.getImageUrl();
+  const shareUrl = `${window.origin}/${guessingNode.getId()}`;
   return (
     <div data-testid={dataTestids.root} className="flex flex-col items-center">
       {guessingNode.hasSiblings() && (
@@ -24,15 +25,16 @@ function GuessingNodeChart({ guessingNode }: Props) {
           <div className="w-[1px] h-full bg-white" />
         </div>
       )}
-      <Link href={`/${guessingNode.getId()}`}>
-        <div className="cursor-pointer w-[200px] p-4 hover:bg-slate-500">
-          <Text color="white" copy={`${guessingNode.getAuthor()}:`} />
-          <div>
-            <Text color="white" copy={guessingNode.getPrompt()} />
-          </div>
-          <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
+      <div className="w-[200px] p-4">
+        <Text color="white" copy={`${guessingNode.getAuthor()}:`} />
+        <div>
+          <Text color="white" copy={guessingNode.getPrompt()} />
         </div>
-      </Link>
+        <div>
+          <LinkText href={shareUrl} copy="Answer again" />
+        </div>
+        <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
+      </div>
       {guessingNode.hasChildren() && (
         <div className="flex-grow">
           <div className="h-10">
