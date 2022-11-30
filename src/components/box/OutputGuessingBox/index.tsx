@@ -29,13 +29,13 @@ function OutputGuessingBox({ guessing }: Props) {
         )}
         <div className="flex flex-col">{imageUrl && <Image src={imageUrl} />}</div>
         <div className="mt-5">
-          <Text color="white" copy="Share the link below:" />
+          <Text color="white" copy="Share the link below:" weight="bold" />
         </div>
         <div>
           <LinkText href={shareUrl} />
         </div>
         <div className="mt-5">
-          <Text color="white" copy="Check the result:" />
+          <Text color="white" copy="Check the result:" weight="bold" />
         </div>
         <div>
           <LinkText href={resultUrl} />

@@ -26,14 +26,7 @@ const Landing: NextPage = function Landing() {
   const promptLabel = 'What is in your mind?';
 
   return isMobileSize ? (
-    <main
-      className="py-10 flex flex-col items-center"
-      style={{
-        width: windowSize.width,
-        height: windowSize.height,
-        backgroundColor: '#1E1E1E',
-      }}
-    >
+    <main className="py-10 min-h-screen flex flex-col justify-center items-center bg-[#1E1E1E]">
       <div className="w-[90%]">
         {!outputGuessing && !hasSubmitted && (
           <div className="mb-5">
@@ -56,14 +49,7 @@ const Landing: NextPage = function Landing() {
       </div>
     </main>
   ) : (
-    <main
-      className="py-10 flex flex-col items-center"
-      style={{
-        width: windowSize.width,
-        height: windowSize.height,
-        backgroundColor: '#1E1E1E',
-      }}
-    >
+    <main className="py-10 min-h-screen flex flex-col justify-center items-center bg-[#1E1E1E]">
       <div className="w-[460px]">
         {!outputGuessing && !hasSubmitted && (
           <div className="mb-5">
