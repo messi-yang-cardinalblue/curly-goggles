@@ -16,6 +16,14 @@ const Landing: NextPage = function Landing() {
   const [prompt, setPrompt] = useState('');
 
   const handleSubmitClick = useCallback(() => {
+    if (!author) {
+      alert('Please enter your name');
+      return;
+    }
+    if (prompt.split(' ').length < 7) {
+      alert('Make sure you have at least 7 words');
+      return;
+    }
     createGuessing(author, prompt, null);
   }, [author, prompt]);
 

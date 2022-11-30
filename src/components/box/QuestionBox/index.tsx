@@ -14,7 +14,7 @@ function QuestionBox({ question, imageUrl, isReady }: Props) {
       <Text copy={question} color="white" size={16} weight="bold" />
       {!isReady && (
         <div>
-          <Text color="white" copy="Pending..." />
+          <Text color="white" copy="Processing image..." />
         </div>
       )}
       <div className="mt-5 flex flex-col">{imageUrl && <Image src={imageUrl} />}</div>

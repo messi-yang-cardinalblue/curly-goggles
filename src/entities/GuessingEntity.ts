@@ -66,7 +66,7 @@ export default class GuessingEntity {
     return this.prompt;
   }
 
-  public isDone(): boolean {
+  public isReady(): boolean {
     return this.state === 'succeeded';
   }
 }

@@ -25,7 +25,7 @@ function GuessingNodeChart({ guessingNode }: Props) {
         </div>
       )}
       <Link href={`/${guessingNode.getId()}`}>
-        <div className="cursor-pointer w-[200px] p-4">
+        <div className="cursor-pointer w-[200px] p-4 hover:bg-slate-500">
           <Text color="white" copy={`${guessingNode.getAuthor()}:`} />
           <div>
             <Text color="white" copy={guessingNode.getPrompt()} />

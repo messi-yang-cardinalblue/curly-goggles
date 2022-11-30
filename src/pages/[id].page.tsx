@@ -11,22 +11,34 @@ import { getInitialLocale } from '@/utils/i18n';
 
 const GuessingPage: NextPage = function GuessingPage() {
   const router = useRouter();
-  // @ts-ignore
-  const guessingId: string = router.query.id;
+  const sourceGuessingId = router.query.id;
+  const guessingId = !!sourceGuessingId && typeof sourceGuessingId === 'string' ? sourceGuessingId : null;
   const windowSize = useWindowSize();
   const isMobileSize = windowSize.width < 500;
   const { guessing, queryGuessing, createGuessing } = useContext(GuessingContext);
 
   useEffect(() => {
-    if (!!guessingId && typeof guessingId === 'string') {
-      queryGuessing(guessingId);
+    if (!guessingId) {
+      return;
     }
+    queryGuessing(guessingId);
   }, [guessingId]);
 
   const [author, setAuthor] = useState('');
   const [prompt, setPrompt] = useState('');
 
   const handleSubmitClick = useCallback(() => {
+    if (!guessingId) {
+      return;
+    }
+    if (!author) {
+      alert('Please enter your name');
+      return;
+    }
+    if (prompt.split(' ').length < 7) {
+      alert('Make sure you have at least 7 words');
+      return;
+    }
     createGuessing(author, prompt, guessingId);
   }, [author, prompt, guessingId]);
 
@@ -44,18 +56,24 @@ const GuessingPage: NextPage = function GuessingPage() {
       }}
     >
       <div className="w-[90%]">
-        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isDone()} />}
-        <div className="mt-15">
-          <GuessingSubmitForm
-            authorLabel={authorLabel}
-            author={author}
-            onAuthorInput={setAuthor}
-            promptLabel={promptLabel}
-            prompt={prompt}
-            onPromptInput={setPrompt}
-            onSubmitClick={handleSubmitClick}
-          />
-        </div>
+        {guessing && (
+          <div>
+            <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isReady()} />
+            {guessing.isReady() && (
+              <div className="mt-12">
+                <GuessingSubmitForm
+                  authorLabel={authorLabel}
+                  author={author}
+                  onAuthorInput={setAuthor}
+                  promptLabel={promptLabel}
+                  prompt={prompt}
+                  onPromptInput={setPrompt}
+                  onSubmitClick={handleSubmitClick}
+                />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </main>
   ) : (
@@ -68,18 +86,24 @@ const GuessingPage: NextPage = function GuessingPage() {
       }}
     >
       <div className="w-[460px]">
-        {guessing && <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isDone()} />}
-        <div className="mt-10">
-          <GuessingSubmitForm
-            authorLabel={authorLabel}
-            author={author}
-            onAuthorInput={setAuthor}
-            promptLabel={promptLabel}
-            prompt={prompt}
-            onPromptInput={setPrompt}
-            onSubmitClick={handleSubmitClick}
-          />
-        </div>
+        {guessing && (
+          <div>
+            <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isReady()} />
+            {guessing.isReady() && (
+              <div className="mt-12">
+                <GuessingSubmitForm
+                  authorLabel={authorLabel}
+                  author={author}
+                  onAuthorInput={setAuthor}
+                  promptLabel={promptLabel}
+                  prompt={prompt}
+                  onPromptInput={setPrompt}
+                  onSubmitClick={handleSubmitClick}
+                />
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </main>
   );
