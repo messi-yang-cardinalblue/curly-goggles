@@ -10,7 +10,10 @@ type Props = {
 function QuestionBox({ guessing }: Props) {
   const question = `Question: What "${guessing.getAuthor()}" is thinking?`;
   const hintWordsCount = guessing.getHint().split(' ').length;
-  const hint = `Hint: ${guessing.getHint().replaceAll(' ', '    ').replaceAll('_', '___')} (${hintWordsCount} words)`;
+  const hint = `Hint: ${guessing
+    .getHint()
+    .replaceAll(' ', '    ')
+    .replaceAll('_', '＿＿＿')} (${hintWordsCount} words)`;
   const imageUrl = guessing.getImageUrl();
   const isProcessing = guessing.isProcessing();
   const isFailed = guessing.isFailed();
