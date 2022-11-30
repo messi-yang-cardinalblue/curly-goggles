@@ -7,7 +7,7 @@ export default class GuessingEntity {
 
   private hint: string;
 
-  private state: 'pending' | 'processing' | 'succeeded';
+  private state: 'pending' | 'processing' | 'succeeded' | 'failed';
 
   private imageUrl: string | null;
 
@@ -20,7 +20,7 @@ export default class GuessingEntity {
     parentId: string | null,
     rootId: string,
     hint: string,
-    state: 'pending' | 'processing' | 'succeeded',
+    state: 'pending' | 'processing' | 'succeeded' | 'failed',
     imageUrl: string | null,
     author: string,
     prompt: string
@@ -40,7 +40,7 @@ export default class GuessingEntity {
     parentId: string | null,
     rootId: string,
     hint: string,
-    state: 'pending' | 'processing' | 'succeeded',
+    state: 'pending' | 'processing' | 'succeeded' | 'failed',
     imageUrl: string | null,
     author: string,
     prompt: string
@@ -86,5 +86,13 @@ export default class GuessingEntity {
 
   public isReady(): boolean {
     return this.state === 'succeeded';
+  }
+
+  public isProcessing(): boolean {
+    return this.state === 'pending' || this.state === 'processing';
+  }
+
+  public isFailed(): boolean {
+    return this.state === 'failed';
   }
 }

@@ -86,7 +86,7 @@ export function Provider({ children }: Props) {
     setTimeout(() => {
       queryGuessingNode(guessingNode.getId());
     }, 2000);
-  });
+  }, [guessingNode]);
 
   const guessingContextValue: GuessingContextValue = useMemo(
     () => ({

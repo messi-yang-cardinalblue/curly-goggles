@@ -49,6 +49,14 @@ export default class GuessingNodeEntity {
     return this.guessing.isReady();
   }
 
+  public isProcessing(): boolean {
+    return this.guessing.isProcessing();
+  }
+
+  public isFailed(): boolean {
+    return this.guessing.isFailed();
+  }
+
   public setParent(parentGuessingNode: GuessingNodeEntity) {
     this.parent = parentGuessingNode;
   }

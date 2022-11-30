@@ -13,6 +13,7 @@ function GuessingNodeChart({ guessingNode }: Props) {
   const imageUrl = guessingNode.getImageUrl();
   const shareUrl = `${window.origin}/${guessingNode.getId()}`;
   const isReady = guessingNode.isReady();
+  const isFailed = guessingNode.isFailed();
   return (
     <div data-testid={dataTestids.root} className="flex flex-col items-center">
       {guessingNode.hasSiblings() && (
@@ -31,13 +32,19 @@ function GuessingNodeChart({ guessingNode }: Props) {
         <div>
           <Text color="white" copy={`"${guessingNode.getPrompt()}"`} />
         </div>
-        <div>
-          <LinkText href={shareUrl} copy="Answer again" />
-        </div>
-        {isReady ? (
-          <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
+        {!isFailed ? (
+          <div>
+            <div>
+              <LinkText href={shareUrl} copy="Share this question" />
+            </div>
+            {isReady ? (
+              <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
+            ) : (
+              <Text color="white" copy="Generating image..." />
+            )}
+          </div>
         ) : (
-          <Text color="white" copy="Generating image..." />
+          <Text color="white" copy="Failed 🥲" />
         )}
       </div>
       {guessingNode.hasChildren() && (

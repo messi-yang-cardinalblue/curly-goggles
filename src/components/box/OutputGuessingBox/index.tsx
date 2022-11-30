@@ -12,7 +12,7 @@ function OutputGuessingBox({ guessing }: Props) {
   const author = guessing.getAuthor();
   const prompt = guessing.getPrompt();
   const imageUrl = guessing.getImageUrl();
-  const isReady = guessing.isReady();
+  const isProcessing = guessing.isProcessing();
   const shareUrl = `${window.origin}/${guessing.getId()}`;
   const resultUrl = `${window.origin}/result/${guessing.getRootId()}`;
   return (
@@ -22,7 +22,7 @@ function OutputGuessingBox({ guessing }: Props) {
         <Text copy={prompt} color="white" size={16} weight="bold" />
       </div>
       <div className="mt-5">
-        {!isReady && (
+        {isProcessing && (
           <div>
             <Text color="white" copy="Generating image..." />
           </div>
