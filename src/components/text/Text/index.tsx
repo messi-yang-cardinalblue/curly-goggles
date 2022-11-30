@@ -15,7 +15,6 @@ function Text({ copy = '', color = 'black', size = 16, weight = 'regular', under
       className={[
         weight === 'regular' ? 'font-normal' : 'font-bold',
         'font-space-grotesk',
-        'whitespace-pre',
         underline ? 'underline' : '',
       ].join(' ')}
       style={{
