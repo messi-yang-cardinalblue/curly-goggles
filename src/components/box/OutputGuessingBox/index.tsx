@@ -19,7 +19,7 @@ function OutputGuessingBox({ guessing }: Props) {
     <div data-testid={dataTestids.root} className="flex flex-col">
       <Text copy={`${author}:`} color="white" size={16} weight="bold" />
       <div>
-        <Text copy={prompt} color="white" size={16} weight="bold" />
+        <Text copy={`"${prompt}"`} color="white" size={16} weight="bold" />
       </div>
       <div className="mt-5">
         {isProcessing && (
