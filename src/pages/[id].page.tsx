@@ -40,7 +40,7 @@ const GuessingPage: NextPage = function GuessingPage() {
   const promptLabel = 'Your answer?';
 
   return isMobileSize ? (
-    <main className="py-10 flex flex-col items-center bg-[#1E1E1E]">
+    <main className="py-10 min-h-screen flex flex-col justify-center items-center bg-[#1E1E1E]">
       <div className="w-[90%]">
         {guessing && (
           <div>
@@ -68,7 +68,7 @@ const GuessingPage: NextPage = function GuessingPage() {
       </div>
     </main>
   ) : (
-    <main className="py-10 flex flex-col items-center bg-[#1E1E1E]">
+    <main className="py-10 min-h-screen flex flex-col justify-center items-center bg-[#1E1E1E]">
       <div className="w-[460px]">
         {guessing && (
           <div>

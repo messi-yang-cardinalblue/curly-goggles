@@ -21,12 +21,12 @@ const ResultPage: NextPage = function ResultPage() {
   }, [rootGuessingId]);
 
   return isMobileSize ? (
-    <main className="overflow-auto p-4 flex" style={{ minHeight: windowSize.height, backgroundColor: '#1E1E1E' }}>
-      {guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}
+    <main className="overflow-auto min-h-screen p-4 bg-[#1E1E1E]">
+      <div>{guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}</div>
     </main>
   ) : (
-    <main className="overflow-auto p-4 flex" style={{ minHeight: windowSize.height, backgroundColor: '#1E1E1E' }}>
-      {guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}
+    <main className="overflow-auto min-h-screen p-4 bg-[#1E1E1E]">
+      <div>{guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}</div>
     </main>
   );
 };

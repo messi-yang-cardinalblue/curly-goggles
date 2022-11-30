@@ -22,7 +22,7 @@ export default class GuessingNodeEntity {
   }
 
   public hasParent(): boolean {
-    return !!this.guessing.getParentId();
+    return !!this.parent;
   }
 
   public getParentId(): string | null {
