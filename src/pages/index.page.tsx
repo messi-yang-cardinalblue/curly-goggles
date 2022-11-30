@@ -27,7 +27,7 @@ const Landing: NextPage = function Landing() {
 
   return isMobileSize ? (
     <main
-      className="w-screen h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="py-10 flex flex-col items-center"
       style={{
         width: windowSize.width,
         height: windowSize.height,
@@ -57,7 +57,7 @@ const Landing: NextPage = function Landing() {
     </main>
   ) : (
     <main
-      className="w-screen h-screen flex flex-col items-center justify-center overflow-hidden"
+      className="py-10 flex flex-col items-center"
       style={{
         width: windowSize.width,
         height: windowSize.height,

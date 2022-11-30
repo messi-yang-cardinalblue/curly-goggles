@@ -8,6 +8,7 @@ module.exports = {
       },
       fontFamily: {
         silkscreen: ['Silkscreen', 'cursive'],
+        ['space-grotesk']: ['Space Grotesk', 'sans-serif'],
       },
     },
   },

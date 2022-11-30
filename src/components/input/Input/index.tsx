@@ -15,7 +15,7 @@ function Input({ value, placeholder = '', onInput }: Props) {
   return (
     <input
       data-testid={dataTestids.root}
-      className="p-2 w-full rounded-sm outline-none  font-silkscreen"
+      className="p-2 w-full rounded-sm outline-none font-space-grotesk"
       placeholder={placeholder}
       value={value}
       onInput={handleInput}

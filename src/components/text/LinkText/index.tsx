@@ -7,7 +7,7 @@ type Props = {
 
 function LinkText({ href = '' }: Props) {
   return (
-    <a data-testid={dataTestids.root} href={href}>
+    <a data-testid={dataTestids.root} href={href} target="_blank" rel="noreferrer">
       <Text copy={href} color="white" size={16} underline />
     </a>
   );

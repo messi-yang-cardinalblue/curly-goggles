@@ -14,8 +14,7 @@ function Text({ copy = '', color = 'black', size = 16, weight = 'regular', under
       data-testid={dataTestids.root}
       className={[
         weight === 'regular' ? 'font-normal' : 'font-bold',
-        'font-silkscreen',
-        'tracking-tightest',
+        'font-space-grotesk',
         underline ? 'underline' : '',
       ].join(' ')}
       style={{
