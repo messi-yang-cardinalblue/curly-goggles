@@ -21,7 +21,7 @@ function QuestionBox({ guessing }: Props) {
       </div>
       {!isReady && (
         <div>
-          <Text color="white" copy="Processing image..." />
+          <Text color="white" copy="Generating image..." />
         </div>
       )}
       <div className="mt-5 flex flex-col">{imageUrl && <Image src={imageUrl} />}</div>

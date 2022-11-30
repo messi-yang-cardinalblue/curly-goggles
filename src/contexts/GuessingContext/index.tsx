@@ -79,6 +79,15 @@ export function Provider({ children }: Props) {
     setGuessingNode(returnedGuessingNode);
   }, []);
 
+  useEffect(() => {
+    if (!guessingNode) {
+      return;
+    }
+    setTimeout(() => {
+      queryGuessingNode(guessingNode.getId());
+    }, 2000);
+  });
+
   const guessingContextValue: GuessingContextValue = useMemo(
     () => ({
       guessing,

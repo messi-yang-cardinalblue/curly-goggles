@@ -45,6 +45,10 @@ export default class GuessingNodeEntity {
     return this.guessing.getPrompt();
   }
 
+  public isReady(): boolean {
+    return this.guessing.isReady();
+  }
+
   public setParent(parentGuessingNode: GuessingNodeEntity) {
     this.parent = parentGuessingNode;
   }

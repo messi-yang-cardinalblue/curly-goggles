@@ -12,6 +12,7 @@ function GuessingNodeChart({ guessingNode }: Props) {
   const children = guessingNode.getChildren();
   const imageUrl = guessingNode.getImageUrl();
   const shareUrl = `${window.origin}/${guessingNode.getId()}`;
+  const isReady = guessingNode.isReady();
   return (
     <div data-testid={dataTestids.root} className="flex flex-col items-center">
       {guessingNode.hasSiblings() && (
@@ -26,14 +27,18 @@ function GuessingNodeChart({ guessingNode }: Props) {
         </div>
       )}
       <div className="w-[200px] p-4">
-        <Text color="white" copy={`${guessingNode.getAuthor()}:`} />
+        <Text color="white" copy={`${guessingNode.getAuthor()}:`} weight="bold" />
         <div>
-          <Text color="white" copy={guessingNode.getPrompt()} />
+          <Text color="white" copy={`"${guessingNode.getPrompt()}"`} />
         </div>
         <div>
           <LinkText href={shareUrl} copy="Answer again" />
         </div>
-        <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
+        {isReady ? (
+          <div className="mt-2">{imageUrl && <Image width={200} src={imageUrl} />}</div>
+        ) : (
+          <Text color="white" copy="Generating image..." />
+        )}
       </div>
       {guessingNode.hasChildren() && (
         <div className="flex-grow">

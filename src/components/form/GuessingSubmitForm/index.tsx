@@ -27,8 +27,8 @@ function GuessingSubmitForm({
       alert('Please enter your name');
       return;
     }
-    if (prompt.split(' ').length < 2) {
-      alert('Make sure you have at least 3 words');
+    if (prompt.split(' ').length < 1) {
+      alert('Make sure you have at least 1 words');
       return;
     }
     onSubmitClick();

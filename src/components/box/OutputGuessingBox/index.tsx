@@ -24,7 +24,7 @@ function OutputGuessingBox({ guessing }: Props) {
       <div className="mt-5">
         {!isReady && (
           <div>
-            <Text color="white" copy="Processing image..." />
+            <Text color="white" copy="Generating image..." />
           </div>
         )}
         <div className="flex flex-col">{imageUrl && <Image src={imageUrl} />}</div>
