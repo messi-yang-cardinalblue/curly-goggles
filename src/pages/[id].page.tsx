@@ -4,6 +4,7 @@ import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import QuestionBox from '@/components/box/QuestionBox';
+import OutputGuessingBox from '@/components/box/OutputGuessingBox';
 import GuessingSubmitForm from '@/components/form/GuessingSubmitForm';
 import GuessingContext from '@/contexts/GuessingContext';
 import useWindowSize from '@/hooks/useWindowSize';
@@ -15,7 +16,7 @@ const GuessingPage: NextPage = function GuessingPage() {
   const guessingId = !!sourceGuessingId && typeof sourceGuessingId === 'string' ? sourceGuessingId : null;
   const windowSize = useWindowSize();
   const isMobileSize = windowSize.width < 500;
-  const { guessing, queryGuessing, createGuessing } = useContext(GuessingContext);
+  const { guessing, outputGuessing, queryGuessing, createGuessing } = useContext(GuessingContext);
 
   useEffect(() => {
     if (!guessingId) {
@@ -29,14 +30,6 @@ const GuessingPage: NextPage = function GuessingPage() {
 
   const handleSubmitClick = useCallback(() => {
     if (!guessingId) {
-      return;
-    }
-    if (!author) {
-      alert('Please enter your name');
-      return;
-    }
-    if (prompt.split(' ').length < 7) {
-      alert('Make sure you have at least 7 words');
       return;
     }
     createGuessing(author, prompt, guessingId);
@@ -59,7 +52,7 @@ const GuessingPage: NextPage = function GuessingPage() {
         {guessing && (
           <div>
             <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isReady()} />
-            {guessing.isReady() && (
+            {guessing.isReady() && !outputGuessing && (
               <div className="mt-12">
                 <GuessingSubmitForm
                   authorLabel={authorLabel}
@@ -70,6 +63,11 @@ const GuessingPage: NextPage = function GuessingPage() {
                   onPromptInput={setPrompt}
                   onSubmitClick={handleSubmitClick}
                 />
+              </div>
+            )}
+            {outputGuessing && (
+              <div className="mt-5">
+                <OutputGuessingBox guessing={outputGuessing} />
               </div>
             )}
           </div>
@@ -89,7 +87,7 @@ const GuessingPage: NextPage = function GuessingPage() {
         {guessing && (
           <div>
             <QuestionBox question={question} imageUrl={guessing.getImageUrl()} isReady={guessing.isReady()} />
-            {guessing.isReady() && (
+            {guessing.isReady() && !outputGuessing && (
               <div className="mt-12">
                 <GuessingSubmitForm
                   authorLabel={authorLabel}
@@ -100,6 +98,11 @@ const GuessingPage: NextPage = function GuessingPage() {
                   onPromptInput={setPrompt}
                   onSubmitClick={handleSubmitClick}
                 />
+              </div>
+            )}
+            {outputGuessing && (
+              <div className="mt-5">
+                <OutputGuessingBox guessing={outputGuessing} />
               </div>
             )}
           </div>

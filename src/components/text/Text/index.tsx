@@ -5,13 +5,19 @@ type Props = {
   color?: string;
   size?: number;
   weight?: 'regular' | 'bold';
+  underline?: boolean;
 };
 
-function Text({ copy = '', color = 'black', size = 16, weight = 'regular' }: Props) {
+function Text({ copy = '', color = 'black', size = 16, weight = 'regular', underline = false }: Props) {
   return (
     <span
       data-testid={dataTestids.root}
-      className={[weight === 'regular' ? 'font-normal' : 'font-bold', 'font-silkscreen', 'tracking-tightest'].join(' ')}
+      className={[
+        weight === 'regular' ? 'font-normal' : 'font-bold',
+        'font-silkscreen',
+        'tracking-tightest',
+        underline ? 'underline' : '',
+      ].join(' ')}
       style={{
         color,
         fontSize: size,

@@ -2,7 +2,8 @@ import axios from 'axios';
 import type { Axios } from 'axios';
 import GuessingEntity from '@/entities/GuessingEntity';
 import GuessingNodeEntity from '@/entities/GuessingNodeEntity';
-import { GuessingEntityDto, CreateGuessingRequestBody } from './dto';
+import { convertGuessingEntityDtoToGuessingEntity } from './dto';
+import type { GuessingEntityDto, CreateGuessingRequestBody } from './dto';
 
 // @ts-ignore-start
 export default class GuessingApi {
@@ -19,29 +20,22 @@ export default class GuessingApi {
     return new GuessingApi();
   }
 
-  public async createGuessing(author: string, prompt: string, parentId: string | null) {
+  public async createGuessing(author: string, prompt: string, parentId: string | null): Promise<GuessingEntity> {
     const requestBody: CreateGuessingRequestBody = {
       author,
       prompt,
       parent_id: parentId,
     };
     const { data } = await this.axios.post('/guessings', requestBody);
-    console.log(data);
+    const descendantGuessingDto: GuessingEntityDto = data;
+    return convertGuessingEntityDtoToGuessingEntity(descendantGuessingDto);
   }
 
   public async getGuessing(id: string): Promise<GuessingEntity> {
     const { data } = await this.axios.get(`/guessings/${id}`);
     const descendantGuessingDto: GuessingEntityDto = data;
 
-    const guessing = GuessingEntity.newGuessingEntity(
-      descendantGuessingDto.id,
-      descendantGuessingDto.parent_id,
-      descendantGuessingDto.state,
-      descendantGuessingDto.image_url,
-      descendantGuessingDto.author,
-      descendantGuessingDto.prompt
-    );
-    return guessing;
+    return convertGuessingEntityDtoToGuessingEntity(descendantGuessingDto);
   }
 
   public async getGuessingTree(rootId: string): Promise<GuessingNodeEntity> {
@@ -62,14 +56,7 @@ export default class GuessingApi {
     const descendantGuessingDtos: GuessingEntityDto[] = result;
 
     descendantGuessingDtos.forEach((descendantGuessingDto) => {
-      const guessing = GuessingEntity.newGuessingEntity(
-        descendantGuessingDto.id,
-        descendantGuessingDto.parent_id,
-        descendantGuessingDto.state,
-        descendantGuessingDto.image_url,
-        descendantGuessingDto.author,
-        descendantGuessingDto.prompt
-      );
+      const guessing = convertGuessingEntityDtoToGuessingEntity(descendantGuessingDto);
       gussingNodeMap[descendantGuessingDto.id] = GuessingNodeEntity.newGuessingEntity(guessing);
     });
 

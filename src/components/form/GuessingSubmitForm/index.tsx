@@ -22,6 +22,18 @@ function GuessingSubmitForm({
   onPromptInput,
   onSubmitClick,
 }: Props) {
+  const handleSubmitClick = () => {
+    if (!author) {
+      alert('Please enter your name');
+      return;
+    }
+    if (prompt.split(' ').length < 2) {
+      alert('Make sure you have at least 3 words');
+      return;
+    }
+    onSubmitClick();
+  };
+
   return (
     <div data-testid={dataTestids.root}>
       <div className="flex flex-col">
@@ -37,7 +49,7 @@ function GuessingSubmitForm({
         </div>
       </div>
       <div className="mt-7 flex flex-col">
-        <Button text="Submit" onClick={onSubmitClick} />
+        <Button text="Submit" onClick={handleSubmitClick} />
       </div>
     </div>
   );
