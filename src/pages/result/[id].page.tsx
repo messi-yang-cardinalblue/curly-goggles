@@ -22,11 +22,11 @@ const ResultPage: NextPage = function ResultPage() {
 
   return isMobileSize ? (
     <main className="overflow-auto min-h-screen p-4 bg-[#1E1E1E]">
-      <div>{guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}</div>
+      {guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}
     </main>
   ) : (
     <main className="overflow-auto min-h-screen p-4 bg-[#1E1E1E]">
-      <div>{guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}</div>
+      {guessingNode && <GuessingNodeChart guessingNode={guessingNode} />}
     </main>
   );
 };
